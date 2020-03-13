@@ -1,0 +1,36 @@
+<h4>Employees List</h4>
+<h6 class="mt-3">Double click to update</h6>
+<table class="table mt-3">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Position</th>
+      <th scope="col">Number</th>
+      <th scope="col">Option</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let employee of employess; index as i;" (dblclick)="showEmployee(i)" #item>
+      <td *ngIf="update !== i" scope="row">{{ employee.name }}</td>
+      <td *ngIf="update !== i">{{ employee.position }}</td>
+      <td *ngIf="update !== i">{{ employee.number }}</td>
+      <td *ngIf="update == i" scope="row"><input class="form-control" type="text" [(ngModel)]="employee.name"
+          maxlength="15"></td>
+      <td *ngIf="update == i"><input class="form-control" type="text" [(ngModel)]="employee.position" maxlength="15">
+      </td>
+      <td *ngIf="update == i"><input class="form-control" type="text" [(ngModel)]="employee.number" maxlength="11"></td>
+      <td *ngIf="update == i">
+        <button class="btn btn-success" style="padding: 4px;" (click)="updateEmployee(i)">Update</button>
+      </td>
+      <td *ngIf="update == i">
+        <button class="btn btn-danger" style="padding: 4px;" (click)="cancel(i)">Cancel</button>
+      </td>
+      <td>
+        <button class="btn btn-danger" style="padding: 4px;" (click)="removeEmployee(i)">Delete</button>
+      </td>
+    </tr>
+    <tr *ngIf="employess.length == 0" style="cursor: auto;">
+      <td class="alert alert-info">There is not employee</td>
+    </tr>
+  </tbody>
+</table>
