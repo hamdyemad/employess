@@ -11,9 +11,9 @@
   </thead>
   <tbody>
     <tr *ngFor="let employee of employess; index as i;" (dblclick)="showEmployee(i)" #item>
-      <td *ngIf="update !== i" scope="row">{{ employee.name }}</td>
-      <td *ngIf="update !== i">{{ employee.position }}</td>
-      <td *ngIf="update !== i">{{ employee.number }}</td>
+      <td *ngIf="update !== i" scope="row">{{ (employee.name.length > 6) ? employee.name + '...' : employee.name }}</td>
+      <td *ngIf="update !== i">{{ (employee.position.length > 6) ? employee.position + '...' : employee.position }}</td>
+      <td *ngIf="update !== i">{{ (employee.number.length > 6) ? employee.number + '...' : employee.number }}</td>
       <td *ngIf="update == i" scope="row"><input class="form-control" type="text" [(ngModel)]="employee.name"
           maxlength="15"></td>
       <td *ngIf="update == i"><input class="form-control" type="text" [(ngModel)]="employee.position" maxlength="15">
